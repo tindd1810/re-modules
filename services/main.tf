@@ -28,9 +28,9 @@ data "terraform_remote_state" "networking" {
 output "ec2-ip0" {
   value = aws_instance.tindd-amz-ec2[0].public_ip
 }
-output "ec2-ip1" {
-  value = aws_instance.tindd-amz-ec2[1].public_ip
-}
+# output "ec2-ip1" {
+#   value = aws_instance.tindd-amz-ec2[1].public_ip
+# }
 # output "ec2-ip2" {
 #   value = aws_instance.tindd-amz-ec2[2].public_ip
 # }
