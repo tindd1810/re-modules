@@ -39,6 +39,60 @@ resource "aws_security_group_rule" "allow_all" {
   security_group_id = aws_security_group.tindd-re-sg.id
 }
 
+resource "aws_security_group_rule" "prometheus" {
+  type              = "ingress"
+  from_port         = 9090
+  to_port           = 9090
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.tindd-re-sg.id
+}
+
+resource "aws_security_group_rule" "cadvisor" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.tindd-re-sg.id
+}
+
+resource "aws_security_group_rule" "node-exporter" {
+  type              = "ingress"
+  from_port         = 9100
+  to_port           = 9100
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.tindd-re-sg.id
+}
+
+resource "aws_security_group_rule" "mysql-exporter" {
+  type              = "ingress"
+  from_port         = 9104
+  to_port           = 9104
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.tindd-re-sg.id
+}
+
+resource "aws_security_group_rule" "grafana" {
+  type              = "ingress"
+  from_port         = 3000
+  to_port           = 3000
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.tindd-re-sg.id
+}
+
+resource "aws_security_group_rule" "mysql-traffic" {
+  type              = "ingress"
+  from_port         = 3306
+  to_port           = 3306
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.tindd-re-sg.id
+}
+
 output "sg-id" {
   value = aws_security_group.tindd-re-sg.id
 }
