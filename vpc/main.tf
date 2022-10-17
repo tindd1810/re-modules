@@ -93,6 +93,14 @@ resource "aws_security_group_rule" "mysql-traffic" {
   security_group_id = aws_security_group.tindd-re-sg.id
 }
 
+resource "aws_security_group_rule" "alertmanager" {
+  type              = "ingress"
+  from_port         = 9093
+  to_port           = 9093
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.tindd-re-sg.id
+}
 output "sg-id" {
   value = aws_security_group.tindd-re-sg.id
 }
