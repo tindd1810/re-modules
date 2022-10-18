@@ -1,7 +1,7 @@
 resource "aws_instance" "jenkins-node" {
   # count = 1
   ami                    = "ami-04ff9e9b51c1f62ca"
-  instance_type          = "t2.micro"
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [data.terraform_remote_state.networking.outputs.sg-id]
   key_name               = aws_key_pair.publickey.key_name
   user_data              = file("${path.module}/userdata.sh")

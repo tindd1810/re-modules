@@ -9,7 +9,6 @@ resource "aws_security_group" "tindd-re-sg" {
   name        = var.sg-name
   description = "Inbound traffic"
   vpc_id      = aws_default_vpc.default.id
-
 }
 
 resource "aws_security_group_rule" "HTTP-traffic" {
