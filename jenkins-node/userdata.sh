@@ -9,3 +9,5 @@ apt install default-jre -y
 apt install git -y
 apt install ansible -y
 apt install docker.io -y
+usermod -a -G docker jenkins
+chmod 777 /var/run/docker.sock
